@@ -8,13 +8,10 @@ WORKDIR /app
 COPY . .
 
 # Install dependencies
-RUN pip install flask torch torchvision pillow timm
-
-# Set environment variable
-ENV FLASK_ENV=production
+RUN pip install streamlit torch torchvision pillow timm
 
 # Expose port
-EXPOSE 5000
+EXPOSE 8501
 
 # Run Flask server
-CMD ["python", "app.py"]
+CMD ["streamlit", "run", "app.py"]

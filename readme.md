@@ -8,21 +8,22 @@ This project uses a pre-trained model to classify flower images. You can run it 
 To run the application locally in development mode, follow these steps:
 
 1. Open a command prompt.
-2. Set the `FLASK_APP` environment variable:
+2. Run the Streamlit app:
     ```bash
-    set FLASK_APP=app.py
+    streamlit run app.py
+    ```
+    or
+    ```bash
+    python -m streamlit run app.py
     ```
 
-3. Run the Flask app:
-    ```bash
-    python app.py
-    ```
-
-Your app should now be running on `http://127.0.0.1:5000`.
+Your app should now be running on `http://localhost:8501`.
 
 ## Production Setup (Docker)
 
 ### 1. **Build Docker Image**
+- size : 9.01GB
+- time to install : 5min 4s
 
 To build the Docker image for production, run the following command in the project directory:
 
@@ -33,5 +34,5 @@ docker build -t flower-classification .
 ### 2. **Run Docker Image**
 
 ```bash
-docker run -p 5000:5000 flower-classification
+docker run -p 8501:8501 flower-classification
 ```
