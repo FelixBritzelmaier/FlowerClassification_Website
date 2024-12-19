@@ -62,12 +62,6 @@ def submited():
                 # The picture is saved in the folder named after the species predicted by the model
                 upload_folder = os.path.join('static','uploads', predicted_class)
                 os.makedirs(upload_folder, exist_ok=True)
-    
-                #contents = os.listdir(upload_folder)
-                #for item in contents:
-                #    item_path = os.path.join(upload_folder, item)
-                #    if os.path.isfile(item_path):
-                #        os.remove(item_path)
         
                 image_path = os.path.join(upload_folder, file.name)
                 image.save(image_path)

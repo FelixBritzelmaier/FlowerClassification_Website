@@ -27,13 +27,13 @@ for f in flower_folders :
         images = [f for f in os.listdir(repertoire_images) if f.endswith(('jpg', 'jpeg', 'png', 'gif'))]
 
         # Select the number of picture a line
-        images_par_ligne = 3
+        images_ligne = 3
 
         # Create gride and fill it with pictures
-        colones = st.columns(images_par_ligne)
+        colones = st.columns(images_ligne)
         for i, image in enumerate(images):
-            col = colones[i % images_par_ligne]
-            col.image(os.path.join(repertoire_images, image), caption=image, use_column_width=True)
+            col = colones[i % images_ligne]
+            col.image(os.path.join(repertoire_images, image), caption=image)
         
     pages.append(st.Page(make_flower_page, url_path=f"/{f}", title=f"{f}"))
 
@@ -41,6 +41,7 @@ def delHistory(pages=pages):
     if os.path.exists(folder) and os.path.isdir(folder):
         try:
             shutil.rmtree(folder)
+            st.sidebar.success('History deleted with success', icon="✅")
             print(f"History deleted with success")
         except Exception as e:
             print(f"Error while deleting history : {e}")
