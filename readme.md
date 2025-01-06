@@ -19,6 +19,8 @@ To run the application locally in development mode, follow these steps:
 
 Your app should now be running on `http://localhost:8501`.
 
+WARNING : access denied error can appear in development Setup on Windows while trying to delete empty folders in static/uploads. The error disappear in production setup.
+
 ## Production Setup (Docker)
 
 ### 1. **Build Docker Image**

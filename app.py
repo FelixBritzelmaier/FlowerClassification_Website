@@ -11,8 +11,22 @@ sys.path.append('.')
 try:
     folder = os.path.join('static','uploads')
 
+    flower_folders=[]
+
     # List of folders in the folder
-    flower_folders = [f for f in os.listdir(folder) if os.path.isdir(os.path.join(folder, f))]
+    for f in os.listdir(folder) :
+        f_path = os.path.join(folder,f)
+        # insert folders containing files
+        if os.path.isdir(f_path) and len(os.listdir(f_path))>0:
+            flower_folders.append(f)
+        # Delete empty folders
+        else :
+            try :
+                os.remove(f_path)
+                flower_folders.remove(f_path)
+            except Exception as e:
+                print(f"error while removing empty folders : {e}")    
+
 except Exception as e:
     flower_folders = []
 
@@ -33,7 +47,21 @@ for f in flower_folders :
         colones = st.columns(images_ligne)
         for i, image in enumerate(images):
             col = colones[i % images_ligne]
-            col.image(os.path.join(repertoire_images, image), caption=image)
+            image_path = os.path.join(repertoire_images, image)
+            col.image(image_path)
+
+            # Delete Button (delete the associated picture)
+            is_pressed = col.button("🗑️ Delete", key=i, use_container_width=True)
+            if is_pressed :
+                try :
+                    os.remove(image_path)
+                    images.remove(image)
+                    # run the application again to apply the changes
+                    st.rerun()
+
+                except Exception as e :
+                    col.error(e)
+            col.markdown(f"""<div style="margin-bottom: 2em"></div>""", unsafe_allow_html=True)
         
     pages.append(st.Page(make_flower_page, url_path=f"/{f}", title=f"{f}"))
 
