@@ -20,10 +20,9 @@ try:
         if os.path.isdir(f_path) and len(os.listdir(f_path))>0:
             flower_folders.append(f)
         # Delete empty folders
-        else :
+        elif os.path.isdir(f_path) and len(os.listdir(f_path))==0:
             try :
-                os.remove(f_path)
-                flower_folders.remove(f_path)
+                os.rmdir(f_path)
             except Exception as e:
                 print(f"error while removing empty folders : {e}")    
 
