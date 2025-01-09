@@ -37,7 +37,7 @@ docker build -t flower-classification .
 docker run -p 8501:8501 flower-classification
 ```
 
-### Other. **Export app history on OUR computer**
+### Other. **Export app history on computer**
 
 ```bash
 docker cp <CONTAINER_ID>:/app/static/uploads <PATH_TO_DESTINATION_FOLDER>
