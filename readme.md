@@ -26,8 +26,6 @@ Your app should now be running on `http://localhost:8501`.
 ## Production Setup (Docker)
 
 ### 1. **Build Docker Image**
-- size : 9.01GB
-- time to install : 5min 4s
 
 To build the Docker image for production, run the following command in the project directory:
 
