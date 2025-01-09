@@ -2,6 +2,10 @@
 
 This project uses a pre-trained model to classify flower images. You can run it in **production** using Docker or in **development** locally.
 
+To test the application you can use 2 floders :
+- `flowers-102-categories-perso`is our training data set.
+- `flowers` is a compilation of picture from the web that were recognized by our trained model
+
 ## Development Setup (Windows)
 
 ### 1. **Set up Flask App**  
@@ -37,7 +41,7 @@ docker build -t flower-classification .
 docker run -p 8501:8501 flower-classification
 ```
 
-### **(Export app history on computer)**
+### Other. **Export app history on OUR computer**
 
 ```bash
 docker cp <CONTAINER_ID>:/app/static/uploads <PATH_TO_DESTINATION_FOLDER>
